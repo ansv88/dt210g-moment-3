@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext"
 import { useState, useEffect } from "react";
 import './css/Inventory.css';
+import API_URL from "../config";
 
 const Inventory = () => {
 
@@ -33,7 +34,7 @@ const Inventory = () => {
   //Hämtar alla produkter från API:t
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/products");
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -90,7 +91,7 @@ const Inventory = () => {
     try {
       if (editingProductId) {
         //Uppdatera befintlig produkt
-        const response = await fetch(`http://localhost:3000/products/${editingProductId}`, {
+        const response = await fetch(`${API_URL}/products/${editingProductId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -107,7 +108,7 @@ const Inventory = () => {
         setMessage("Produkten har uppdaterats!");
       } else {
         //Skapa ny produkt
-        const response = await fetch("http://localhost:3000/products", {
+        const response = await fetch(`${API_URL}/products`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -149,7 +150,7 @@ const Inventory = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/products/${id}`, {
+      const response = await fetch(`${API_URL}/products/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { User, LoginCredentials, AuthResponse, AuthContextType } from "../types/auth.types";
+import API_URL from "../config";
 
 //Skapa context
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -15,7 +16,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     //Logga in användare
     const login = async (credentials: LoginCredentials) => {
         try {
-            const res = await fetch("http://localhost:3000/users/login", {
+            const res = await fetch(`${API_URL}/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -51,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         try {
 
-            const res = await fetch("http://localhost:3000/users/validate", {
+            const res = await fetch(`${API_URL}/users/validate`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json",
