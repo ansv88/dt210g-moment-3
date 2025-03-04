@@ -1,0 +1,55 @@
+.homepage-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Titlar */
+  .homepage-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .homepage-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Produktlista */
+  .product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .product-item {
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .product-item:hover {
+    background-color: #eaeaea;
+  }
+  
+  /* Länk till enskild produkt */
+  .product-link {
+    text-decoration: none;
+    color: #2bbbad;
+    font-weight: bold;
+  }
+  
+  .product-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Produktinfo */
+  .product-info {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }

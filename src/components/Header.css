@@ -1,0 +1,36 @@
+.header-container {
+    background-color: #2bbbad;
+    padding: 10px;
+  }
+  
+  .header-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .header-nav li {
+    margin-right: 15px;
+  }
+
+  .loginout-li {
+    margin-left: auto;
+  }
+  
+  .header-nav a,
+  .header-nav button {
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: 600;
+    padding-left: 14px;
+  }
+  
+  .header-nav a:hover,
+  .header-nav button:hover {
+    text-decoration: underline;
+  }
