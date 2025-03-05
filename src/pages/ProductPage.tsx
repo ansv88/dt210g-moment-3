@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import './css/ProductPage.css';
+import API_URL from "../config";
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,7 +18,7 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/products/${id}`);
+        const response = await fetch(`${API_URL}/products/${id}`);
         const data = await response.json();
         setProduct(data);
       } catch (error) {
