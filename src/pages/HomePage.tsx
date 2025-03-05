@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './css/HomePage.css';
+import API_URL from "../config";
 
 const HomePage = () => {
 
@@ -18,7 +19,7 @@ const HomePage = () => {
   // Funktion för att hämta alla produkter från API:t
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/products");
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
