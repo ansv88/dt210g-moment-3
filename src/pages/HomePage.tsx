@@ -15,15 +15,19 @@ const HomePage = () => {
   }
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); //Laddningsstate
 
   // Funktion för att hämta alla produkter från API:t
   const fetchProducts = async () => {
     try {
+      setLoading(true); //Aktivera laddning
       const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
       console.error("Fel vid hämtning av produkter:", error);
+    } finally {
+      setLoading(false); //Avsluta laddning
     }
   };
 
@@ -37,7 +41,7 @@ const HomePage = () => {
       <h1 className="homepage-title">Välkommen till vår produktkatalog!</h1>
       <div className="intro-container">
         <p>
-          Här hittar du ett brett utbud av produkter inom flera kategorier. Vi erbjuder 
+          Här hittar du ett brett utbud av produkter inom flera kategorier. Vi erbjuder
           <strong> elektronik</strong> såsom datorutrustning, tangentbord och skärmar, samt inom
           skönhet och hälsa med produkter som personvågar och eltandborstar.
         </p>
@@ -47,25 +51,35 @@ const HomePage = () => {
           för hemmet, smarta hälsoprodukter eller något annat användbart!
         </p>
       </div>
+
       <h2 className="homepage-subtitle">Alla produkter</h2>
-      <ul className="product-list">
-        {products.map((product) => (
-          <li key={product._id} className="product-item">
-            <Link to={`/product/${product._id}`} className="product-link">
-              <strong>{product.productName}</strong>
-            </Link>
-            <div className="product-info">
-              <span>Kategori: {product.category}</span>
-              <span>Beskrivning: {product.description}</span>
-              <span>
-                Lagersaldo:{" "}
-                {product.amount > 10 ? "Fler än 10 i lager" : "Färre än 10 i lager"}
-              </span>
-              <span>Pris: {product.price} SEK</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+
+      {/* Visa laddningsindikator om produkterna hämtas */}
+      {loading ? (
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Laddar produkter. Det kan ta lite tid...</p>
+        </div>
+      ) : (
+        <ul className="product-list">
+          {products.map((product) => (
+            <li key={product._id} className="product-item">
+              <Link to={`/product/${product._id}`} className="product-link">
+                <strong>{product.productName}</strong>
+              </Link>
+              <div className="product-info">
+                <span>Kategori: {product.category}</span>
+                <span>Beskrivning: {product.description}</span>
+                <span>
+                  Lagersaldo:{" "}
+                  {product.amount > 10 ? "Fler än 10 i lager" : "Färre än 10 i lager"}
+                </span>
+                <span>Pris: {product.price} SEK</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

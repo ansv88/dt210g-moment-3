@@ -16,6 +16,7 @@ const Inventory = () => {
 
   const { user } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // Laddningsstate
   const [message, setMessage] = useState("");
 
   //Formulärfält (återanvänds för både skapa/uppdatera)
@@ -34,11 +35,14 @@ const Inventory = () => {
   //Hämtar alla produkter från API:t
   const fetchProducts = async () => {
     try {
+      setLoading(true); //Aktivera laddning
       const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
       console.error("Fel vid hämtning av produkter:", error);
+    } finally {
+      setLoading(false); //Avsluta laddning
     }
   };
 
@@ -245,6 +249,12 @@ const Inventory = () => {
       <hr className="inventory-separator" />
 
       <h2 className="inventory-subtitle">Alla produkter</h2>
+      {loading ? (
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Laddar produkter. Det kan ta lite tid...</p>
+        </div>
+      ) : (
       <ul className="inventory-product-list">
         {products.map((product) => (
           <li key={product._id} className="inventory-product-item">
@@ -262,6 +272,7 @@ const Inventory = () => {
           </li>
         ))}
       </ul>
+      )}
     </div>
   )
 }
