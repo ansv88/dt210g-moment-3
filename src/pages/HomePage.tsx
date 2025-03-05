@@ -34,25 +34,36 @@ const HomePage = () => {
 
   return (
     <div className="homepage-container">
-      <h1 className="homepage-title">Välkommen</h1>
-
+      <h1 className="homepage-title">Välkommen till vår produktkatalog!</h1>
+      <div className="intro-container">
+        <p>
+          Här hittar du ett brett utbud av produkter inom flera kategorier. Vi erbjuder 
+          <strong> elektronik</strong> såsom datorutrustning, tangentbord och skärmar, samt inom
+          skönhet och hälsa med produkter som personvågar och eltandborstar.
+        </p>
+        <br />
+        <p>
+          Utforska vårt lager och hitta produkter som passar dina behov – oavsett om det är teknik
+          för hemmet, smarta hälsoprodukter eller något annat användbart!
+        </p>
+      </div>
       <h2 className="homepage-subtitle">Alla produkter</h2>
       <ul className="product-list">
         {products.map((product) => (
           <li key={product._id} className="product-item">
-          <Link to={`/product/${product._id}`} className="product-link">
-            <strong>{product.productName}</strong>
-          </Link>
-          <div className="product-info">
-            <span>Kategori: {product.category}</span>
-            <span>Beskrivning: {product.description}</span>
-            <span>
-              Lagersaldo:{" "}
-              {product.amount > 10 ? "Fler än 10 i lager" : "Färre än 10 i lager"}
-            </span>
-            <span>Pris: {product.price} SEK</span>
-          </div>
-        </li>
+            <Link to={`/product/${product._id}`} className="product-link">
+              <strong>{product.productName}</strong>
+            </Link>
+            <div className="product-info">
+              <span>Kategori: {product.category}</span>
+              <span>Beskrivning: {product.description}</span>
+              <span>
+                Lagersaldo:{" "}
+                {product.amount > 10 ? "Fler än 10 i lager" : "Färre än 10 i lager"}
+              </span>
+              <span>Pris: {product.price} SEK</span>
+            </div>
+          </li>
         ))}
       </ul>
     </div>

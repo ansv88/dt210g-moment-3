@@ -1,6 +1,6 @@
 .homepage-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 20px;
   }
   
@@ -13,14 +13,32 @@
   
   .homepage-subtitle {
     font-size: 1.5rem;
+    margin-top: 50px;
     margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* Introtext */
+  .intro-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .intro-container p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .intro-container strong {
+    color: #2bbbad;
   }
   
   /* Produktlista */
   .product-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    margin-top: 30px;
   }
   
   .product-item {

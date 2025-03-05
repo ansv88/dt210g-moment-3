@@ -12,7 +12,7 @@ const Header = () => {
           <NavLink to="/">Startsida</NavLink>
         </li>
         <li>
-          <NavLink to="/inventory">Hantera lager</NavLink>
+          <NavLink to="/inventory">Admin</NavLink>
         </li>
         <li className="loginout-li">
           {!user ? (

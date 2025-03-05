@@ -9,11 +9,7 @@
     list-style: none;
     gap: 15px;
     flex-wrap: wrap;
-  }
-  
-  .header-nav li {
-    margin-right: 15px;
-  }
+  } 
 
   .loginout-li {
     margin-left: auto;
