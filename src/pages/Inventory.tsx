@@ -180,6 +180,12 @@ const Inventory = () => {
 
       {message && <p className="inventory-message">{message}</p>}
 
+      <p className="admin-info">
+        På den här sidan kan du sköta lagerhanteringen av produkter. 
+        Du kan lägga till nya produkter, uppdatera befintliga samt ta bort produkter från listan. 
+        Använd knapparna på en produkt för att redigera dess uppgifter eller ta bort den om den inte längre är aktuell.
+      </p>
+
       <h2 className="inventory-subtitle">
         {editingProductId ? "Uppdatera produkt" : "Lägg till en ny produkt"}
       </h2>
